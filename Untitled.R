@@ -1,3 +1,20 @@
+# Install Packages
+# Data Import
+install.packages("readr", dependencies = c("Depends", "Suggests"))
+install.packages("data.table", dependencies = c("Depends", "Suggests"))
+install.packages("readxl", dependencies = c("Depends", "Suggests"))
+install.packages("gdata", dependencies = c("Depends", "Suggests"))
+install.packages("XLConnect", dependencies = c("Depends", "Suggests"))
+install.packages("RMySQL", dependencies = c("Depends", "Suggests"))
+install.packages("httr", dependencies = c("Depends", "Suggests"))
+# Data Manipulation
+install.packages("dplyr", dependencies = c("Depends", "Suggests"))
+install.packages("ggplot2", dependencies = c("Depends", "Suggests"))
+# Data Visualization
+install.packages("ggvis", dependencies = c("Depends", "Suggests"))
+
+
+
 library(dplyr)
 library(data.table)
 library(ggplot2)
@@ -12,6 +29,9 @@ raw.data <-
     making.year = sample(rep(2017:2014,c(30,40,30,20))),
     repair.year = making.year+sample(1:4)) %>%
   arrange(product, making.year, repair.year)
+
+head(tbl_df(raw.data))
+tail(tbl_df(raw.data))
 
 
 # 상품별 집계(table 함수)후 data.frame화 -> 컬럼명 바꿔주고 정렬 
@@ -30,6 +50,8 @@ total <-
   summarise(total = sum(count)) %>%
   arrange(product, making.year)
 
+head(total)
+head(data)
 
 # 비율
 ratio.data <-
